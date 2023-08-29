@@ -73,3 +73,10 @@ const addContact = async (name, email, phone) => {
 };
 
 // addContact("John Doe", "john@example.com", "1234567890");
+
+module.exports = {
+  listContacts,
+  getContactById,
+  removeContact,
+  addContact,
+};
