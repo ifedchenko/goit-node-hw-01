@@ -25,10 +25,10 @@ async function getContactById(contactId) {
 async function removeContact(contactId) {
   const data = await fs.readFile(contactsPath, "utf-8");
   const contacts = JSON.parse(data);
-
   const index = contacts.findIndex(
     contact => contact.id === contactId
   );
+
   if (index === -1) {
     console.log(`null`);
     return null;
