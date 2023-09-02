@@ -41,7 +41,7 @@ async function removeContact(contactId) {
   return removedContact;
 }
 
-const addContact = async (name, email, phone) => {
+async function addContact(name, email, phone) {
   const newContact = { name, email, phone };
   const existingData = await fs.readFile(contactsPath, "utf-8");
   const contacts = JSON.parse(existingData);
@@ -49,7 +49,7 @@ const addContact = async (name, email, phone) => {
   await fs.writeFile(contactsPath, JSON.stringify(contacts));
   console.log(`Contact ${name} added successfully!`);
   console.log(newContact);
-};
+}
 
 module.exports = {
   listContacts,
