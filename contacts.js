@@ -9,8 +9,6 @@ async function listContacts() {
   return contacts;
 }
 
-// listContacts();
-
 async function getContactById(contactId) {
   const data = await fs.readFile(contactsPath, "utf-8");
   const contacts = JSON.parse(data);
@@ -24,32 +22,24 @@ async function getContactById(contactId) {
   return contact;
 }
 
-// getContactById("AeHIrLTr6JkxGE6SN-0Rw");
-
 async function removeContact(contactId) {
-  try {
-    const data = await fs.readFile(contactsPath, "utf-8");
-    const contacts = JSON.parse(data);
+  const data = await fs.readFile(contactsPath, "utf-8");
+  const contacts = JSON.parse(data);
 
-    const index = contacts.findIndex(
-      contact => contact.id === contactId
-    );
-    if (index === -1) {
-      return null;
-    }
-
-    const removedContact = contacts.splice(index, 1)[0];
-    await fs.writeFile(contactsPath, JSON.stringify(contacts));
-    console.log(`Contact with id ${contactId} removed.`);
-    console.log(removedContact);
-    return removedContact;
-  } catch (error) {
-    console.error("Error removing contact:", error);
+  const index = contacts.findIndex(
+    contact => contact.id === contactId
+  );
+  if (index === -1) {
+    console.log(`null`);
     return null;
   }
-}
 
-// removeContact("AeHIrLTr6JkxGE6SN-0Rw");
+  const removedContact = contacts.splice(index, 1)[0];
+  await fs.writeFile(contactsPath, JSON.stringify(contacts));
+  console.log(`Contact with id ${contactId} removed.`);
+  console.log(removedContact);
+  return removedContact;
+}
 
 const addContact = async (name, email, phone) => {
   const newContact = { name, email, phone };
@@ -64,8 +54,6 @@ const addContact = async (name, email, phone) => {
     console.error("Error adding contact:", error);
   }
 };
-
-// addContact("slaiuvakjna22jn", "John Doe", "john@example.com", "1234567890");
 
 module.exports = {
   listContacts,
