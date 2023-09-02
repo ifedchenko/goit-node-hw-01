@@ -5,20 +5,18 @@ const contactsPath = path.join(__dirname, "db/contacts.json");
 async function listContacts() {
   const data = await fs.readFile(contactsPath, "utf-8");
   const contacts = JSON.parse(data);
-  console.table(contacts);
+  // console.table(contacts);
   return contacts;
 }
 
 async function getContactById(contactId) {
-  const data = await fs.readFile(contactsPath, "utf-8");
-  const contacts = JSON.parse(data);
+  const contacts = await listContacts();
   const contact = contacts.find(contact => contact.id === contactId);
 
   if (!contact) {
     console.log(`null`);
     return null;
   }
-  console.table(contact);
   return contact;
 }
 
