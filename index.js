@@ -5,6 +5,7 @@ const {
   getContactById,
   removeContact,
   addContact,
+  updateContact,
 } = require("./contacts.js");
 
 const program = new Command();
@@ -41,6 +42,14 @@ async function invokeAction({ action, id, name, email, phone }) {
       );
       console.log(removedContact);
       break;
+    case "update":
+      const updatedContact = await updateContact(id, {
+        name,
+        email,
+        phone,
+      });
+      console.log(`Contact ${name} updated successfully!`);
+      console.log(updatedContact);
     default:
       console.warn("\x1B[31m Unknown action type!");
   }
