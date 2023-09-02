@@ -7,8 +7,6 @@ const {
   addContact,
 } = require("./contacts.js");
 
-// const argv = require("yargs").argv;
-
 const program = new Command();
 program
   .option("-a, --action <type>", "choose action")
