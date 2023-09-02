@@ -1,3 +1,5 @@
+const { Command } = require("commander");
+
 const {
   listContacts,
   getContactById,
@@ -5,12 +7,19 @@ const {
   addContact,
 } = require("./contacts.js");
 
-// listContacts();
-// getContactById("AeHIrLTr6JkxGE6SN-0Rw");
-// removeContact("AeHIrLTr6JkxGE6SN-0Rw");
-// addContact("John Doe", "john@example.com", "1234567890");
+// const argv = require("yargs").argv;
 
-const argv = require("yargs").argv;
+const program = new Command();
+program
+  .option("-a, --action <type>", "choose action")
+  .option("-i, --id <type>", "user id")
+  .option("-n, --name <type>", "user name")
+  .option("-e, --email <type>", "user email")
+  .option("-p, --phone <type>", "user phone");
+
+program.parse(process.argv);
+
+const argv = program.opts();
 
 function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
