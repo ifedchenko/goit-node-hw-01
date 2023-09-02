@@ -33,8 +33,6 @@ async function removeContact(contactId) {
 
   const removedContact = contacts.splice(index, 1)[0];
   await fs.writeFile(contactsPath, JSON.stringify(contacts));
-  console.log(`Contact with id ${contactId} removed.`);
-  console.log(removedContact);
   return removedContact;
 }
 
@@ -44,8 +42,7 @@ async function addContact(name, email, phone) {
   const contacts = JSON.parse(existingData);
   contacts.push(newContact);
   await fs.writeFile(contactsPath, JSON.stringify(contacts));
-  console.log(`Contact ${name} added successfully!`);
-  console.log(newContact);
+  return newContact;
 }
 
 module.exports = {
