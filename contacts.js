@@ -43,16 +43,12 @@ async function removeContact(contactId) {
 
 const addContact = async (name, email, phone) => {
   const newContact = { name, email, phone };
-  try {
-    const existingData = await fs.readFile(contactsPath, "utf-8");
-    const contacts = JSON.parse(existingData);
-    contacts.push(newContact);
-    await fs.writeFile(contactsPath, JSON.stringify(contacts));
-    console.log(`Contact ${name} added successfully!`);
-    console.log(newContact);
-  } catch (error) {
-    console.error("Error adding contact:", error);
-  }
+  const existingData = await fs.readFile(contactsPath, "utf-8");
+  const contacts = JSON.parse(existingData);
+  contacts.push(newContact);
+  await fs.writeFile(contactsPath, JSON.stringify(contacts));
+  console.log(`Contact ${name} added successfully!`);
+  console.log(newContact);
 };
 
 module.exports = {
