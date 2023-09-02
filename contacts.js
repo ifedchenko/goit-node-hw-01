@@ -45,7 +45,7 @@ async function updateContact(id, data) {
   const index = contacts.findIndex(contact => contact.id === id);
 
   if (index === -1) {
-    console.log(`null`);
+    console.log(null);
     return null;
   }
 

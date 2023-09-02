@@ -50,6 +50,7 @@ async function invokeAction({ action, id, name, email, phone }) {
       });
       console.log(`Contact ${name} updated successfully!`);
       console.log(updatedContact);
+      break;
     default:
       console.warn("\x1B[31m Unknown action type!");
   }
